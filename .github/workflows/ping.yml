@@ -8,9 +8,6 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    retention-days: 1         # ✅ delete logs after 1 day
     steps:
       - name: Ping Render backend
         run: |
