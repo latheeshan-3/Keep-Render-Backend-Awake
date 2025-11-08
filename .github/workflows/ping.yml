@@ -2,18 +2,18 @@ name: Keep-Render-Backend-Awake
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # runs every 10 minutes
-  workflow_dispatch:         # allows manual run from Actions tab
+    - cron: "*/5 * * * *"   # runs every 10 minutes
+  workflow_dispatch:          # allows manual run from Actions tab
 
 jobs:
   ping:
     runs-on: ubuntu-latest
-     permissions:
+    permissions:
       actions: write
-    retention-days: 1   # 🧹 keeps logs only 1 day
+    retention-days: 1         # ✅ delete logs after 1 day
     steps:
       - name: Ping Render backend
         run: |
           echo "Pinging Render backend..."
           curl -s -o /dev/null -w "%{http_code}\n" https://senior-gravity-backend.onrender.com/
-          echo "Ping complete "
+          echo "Ping complete"
